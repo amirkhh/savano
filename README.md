@@ -28,29 +28,26 @@ you need to use an storage to save your payments and payments status.
 ..... 
 
 <?php
-public function actionRequest()
+public function actionVerify($au, $order_id)
 {
-    /* Your Data */
-    $pin      = 'Your Pin';
-    $callback = 'Your Callback Url';// 'http://www.xxxx.com/payment/verify';
+    $pin = 'Your Pin';
 
-    /* Save Price, OrderId and Authority In Your Storage */
-    $price    = 1000;
-    $orderId  = 1;
+    /* Fetch Price, OrderId and Authority in Your Storage */
+    $authority = $au;
+    $price     = 100;
+    $orderId   = $order_id;
 
     $savano = new Savano;
     $savano->pin = $pin;
 
-    if($request = $savano->request($price, $orderId, $callback)->getResult() === 1)
+    if(($verify = $savano->verify($authority, $price, $orderId)->getResult()) === 1)
     {
-        // $authority = $savano->getAuthority();
-        // You can save your payment request data to the database in here before redirect user to bank
-
-        return $this->redirect($savano->getRedirectUrl());
+        // Payment Successfully
+        echo 'Payment Successfully';
     }
     else
     {
-        // Show Error.
+	// Show Error
         echo $savano->getErrorMessage();
     }
 }
