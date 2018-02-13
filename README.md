@@ -12,7 +12,7 @@ php composer.phar require amirkhh/savano
 ```
 or add
 ```
-"amirkhh/savano": "dev-master"
+"amirkhh/savano": "^1.0"
 ```
 to the require section of your ``composer.json`` file.
     
