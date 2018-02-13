@@ -78,5 +78,14 @@ public function actionVerify()
     }
 }
 
+public function beforeAction($action)
+{
+    if ($action->id == 'verify') {
+        $this->enableCsrfValidation = false;
+    }
+
+    return parent::beforeAction($action);
+}
+
 .....
 ```
