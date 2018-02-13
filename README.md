@@ -64,17 +64,17 @@ public function actionVerify($au, $order_id)
     $price     = 100;
     $orderId   = $order_id;
 
-	$savano = new Savano;
+    $savano = new Savano;
     $savano->pin = $pin;
 
     if(($verify = $savano->verify($authority, $price, $orderId)->getResult()) === 1)
-	{
-		// Payment Successfully
+    {
+        // Payment Successfully
         echo 'Payment Successfully';
-	}
-	else
-	{
-		// Show Error
+    }
+    else
+    {
+	// Show Error
         echo $savano->getErrorMessage();
     }
 }
