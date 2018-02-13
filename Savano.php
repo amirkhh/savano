@@ -90,17 +90,14 @@ class Savano extends Model
     {
         $this->authority = $authority;
 
+        $bank_return = $_POST + $_GET;
+
         $dataString = json_encode([
             'pin'      => $this->pin,
             'price'    => $price,
             'order_id' => $orderId,
             'au'       => $this->authority,
-            'bank_return' => [
-                'SaleReferenceId' => '20170814113803',
-                'ResCode'  => 'random_res_code_8',
-                'card_pan' => '1111111111111111',
-                'State'    => '1',
-            ],
+            'bank_return' => $bank_return,
         ]);
 
         $result = $this->curl('https://developerapi.net/api/v1/verify', $dataString);
@@ -110,6 +107,7 @@ class Savano extends Model
 
         $this->result        = $json['result'];
         $this->authority     = $json['au'];
+
 
         if($this->result === 1)
         {
