@@ -55,25 +55,26 @@ public function actionRequest()
     }
 }
 
-public function actionVerify()
+public function actionVerify($au, $order_id)
 {
     $pin = 'Your Pin';
 
-    /* Fetch Price, OrderId and Authority From Your Storage */
-    $authority = 'xxxxxxxxxxxxxxx';
-    $price     = 1000;
-    $orderId   = 1;
+    /* Fetch Price, OrderId and Authority in Your Storage */
+    $authority = $au;
+    $price     = 100;
+    $orderId   = $order_id;
 
-    $savano = new Savano;
+	$savano = new Savano;
     $savano->pin = $pin;
 
-    if($verify = $savano->verify($authority, $price, $orderId)->getResult() === 1)
-    {
-        // Payment Successfully
-    }
-    else
-    {
-        // Show Error
+    if(($verify = $savano->verify($authority, $price, $orderId)->getResult()) === 1)
+	{
+		// Payment Successfully
+        echo 'Payment Successfully';
+	}
+	else
+	{
+		// Show Error
         echo $savano->getErrorMessage();
     }
 }
