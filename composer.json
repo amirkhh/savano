@@ -3,7 +3,7 @@
     "description": "Savano Payment Gateway Extension For Yii2",
     "type": "yii2-extension",
     "keywords": ["Savano","online","payment","iran","persian"],
-    "license": "MIT License",
+    "license": "BSD",
     "authors": [
         {
             "name": "Amir Khoshhal",
