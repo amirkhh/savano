@@ -32,7 +32,7 @@ public function actionRequest()
 {
     /* Your Data */
     $pin      = 'Your Pin';
-    $callback = 'Your Callback Url';
+    $callback = 'Your Callback Url';// 'http://www.xxxx.com/payment/verify';
 
     /* Save Price, OrderId and Authority In Your Storage */
     $price    = 1000;
